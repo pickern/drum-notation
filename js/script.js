@@ -15,7 +15,9 @@ cursor = {
 
 $( document ).ready(function() {
       draw = canvasManager();
+      // Wait for font with music notation to load
       draw.loadingMessage();
+      // Draw some sample content
       setTimeout(function(){
         draw.clear();
         draw.makeLine();
@@ -24,12 +26,6 @@ $( document ).ready(function() {
         draw.makeLine();
         draw.drawDownStemNote(cursor.position, 100*draw.getLines() - 24 - noteheight.bassdrum1);
         draw.drawNote(cursor.position, 100*draw.getLines() - 24 - noteheight.sidestick);
-        // draw.drawDownStemNote(cursor.position, 100*draw.getLines() - 24 - noteheight.acousticbassdrum);
-        // draw.drawDownStemNote(cursor.position, 100*draw.getLines() - 24 - noteheight.lowfloortomtom);
-        // draw.drawDownStemNote(cursor.position, 100*draw.getLines() - 24 - noteheight.highfloortomtom);
-        // draw.drawDownStemNote(cursor.position, 100*draw.getLines() - 24 - noteheight.lowtomtom);
-        // draw.drawStemNote(cursor.position, 100*draw.getLines() - 24 - noteheight.tambourine);
-        // draw.drawStemNote(cursormax, 49);
       }, 1000);
 });
 
@@ -77,6 +73,7 @@ noteheight = {
   opentriangle: 19*4.5,
 }
 
+// Handles canvas methods
 function canvasManager(){
   var canvas = $( "#canvas" ).get(0);
   var ctx = canvas.getContext("2d");
@@ -87,6 +84,7 @@ function canvasManager(){
   var lines = 0;
 
   return{
+    // Draw a staff
     makeLine: function(){
       start = lines*100 + margin;
       for(i = 0; i < 5; i++){
@@ -103,16 +101,19 @@ function canvasManager(){
       lines++;
     },
 
+    // Remove a staff
     removeLine: function(){
       ctx.clearRect(0, 100*lines+margin, canvas.width, 50);
       lines--;
     },
 
+    // Clears canvas
     clear: function(){
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       lines = 0;
     },
 
+    // Draw note at position x, y
     drawNote : function(x, y){
       ctx.fillText(symbols.quarter, x, y);
       ctx.beginPath();
@@ -122,6 +123,7 @@ function canvasManager(){
       cursor.position += notespacing.quarter;
     },
 
+    // Draw note with downward stem at position x, y
     drawDownStemNote : function(x, y){
       ctx.fillText(symbols.quarter, x, y);
       ctx.beginPath();
@@ -131,10 +133,12 @@ function canvasManager(){
       cursor.position += notespacing.quarter;
     },
 
+    // Returns number of lines
     getLines : function(){
       return lines;
     },
 
+    // Loading message
     loadingMessage : function(){
       ctx.fillText('Loading Resources...', 220, 100);
     }

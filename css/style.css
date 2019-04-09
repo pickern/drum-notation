@@ -1,10 +1,6 @@
-@import
-url(https://fontlibrary.org/face/musica);
-
 #canvas{
   position: absolute;
   bottom: 0;
-  /* border: solid black 1px; */
 }
 
 #title{
@@ -15,7 +11,6 @@ url(https://fontlibrary.org/face/musica);
 
 #artist{
   margin: 0;
-
 }
 
 #wrapper{
