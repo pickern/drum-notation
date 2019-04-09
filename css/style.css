@@ -1,0 +1,49 @@
+@import
+url(https://fontlibrary.org/face/musica);
+
+#canvas{
+  position: absolute;
+  bottom: 0;
+  /* border: solid black 1px; */
+}
+
+#title{
+  margin: 0;
+  padding: 1em;
+  padding-bottom: 0;
+}
+
+#artist{
+  margin: 0;
+
+}
+
+#wrapper{
+  position: relative;
+  height: 11in;
+  width: 8.5in;
+  border: solid black 1px;
+}
+
+#header{
+  clear: both;
+  position: relative;
+  top: 0;
+  text-align: center;
+  height: 1.5in;
+}
+
+#tempo-marking{
+  position: absolute;
+  width: 100px;
+  left: 0;
+  bottom: 10px;
+}
+
+#info{
+  position: absolute;
+  width: 100px;
+  text-align: left;
+  bottom: 10px;
+  right: 0;
+}
